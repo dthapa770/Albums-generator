@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.search-bar__input{
+#search-bar__input{
     background: #000000d0;
     color: white;
     border:none;

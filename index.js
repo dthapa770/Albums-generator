@@ -1,13 +1,13 @@
 var album_container = document.querySelector('.album_container')
+const search_bar = document.getElementById('search-bar__input');
 
 
-function search (){
-    document.querySelector(".search-bar__input").addEventListener("click", function () {
-        search_text = document.querySelector('search-bar__input').value
-        console.log(search_text)
-      });
-}
 
+search_bar.addEventListener('keyup',(e) =>{
+    search_string = e.target.value.toLowerCase();
+    albums(search_string)
+})
+     
 async function albums(artist_name){
 
     const response = await fetchJsonp(`https://itunes.apple.com/search?term=${artist_name}&media=music&entity=album&attribute=artistTerm&limit=500`);
@@ -36,7 +36,6 @@ const display_albums = (albums) =>{
     })
     .join('')
     album_container.insertAdjacentHTML("afterbegin",html_string)
-
 };
 
-albums('jack');
+
