@@ -1,19 +1,27 @@
-var album_container = document.querySelector('.album_container')
-const search_bar = document.getElementById('search-bar__input');
-
-
-
-search_bar.addEventListener('keyup',(e) =>{
-    search_string = e.target.value.toLowerCase();
-    albums(search_string)
+const dom_selectors={
+    album_container: document.querySelector('.album_container'),
+    search_text:document.querySelector('.search-bar__input').value,
+    search_form: document.querySelector(".search-form"),
+    message_text: document.getElementById('message-text')
+   
+}
+dom_selectors.search_form.addEventListener("submit", (e) =>{
+    e.preventDefault()
+    dom_selectors.search_text = document.querySelector('.search-bar__input').value;
+    if(dom_selectors.search_text == ""){
+        dom_selectors.message_text.innerHTML ="Please provide Artist name"
+    }
+    albums(dom_selectors.search_text)
 })
-     
-async function albums(artist_name){
+  
+async function albums(artist){
 
-    const response = await fetchJsonp(`https://itunes.apple.com/search?term=${artist_name}&media=music&entity=album&attribute=artistTerm&limit=500`);
+    const response = await fetchJsonp(`https://itunes.apple.com/search?term=${artist}&media=music&entity=album&attribute=artistTerm&limit=500`);
     const result =  await response.json()
     albums = await result.results
     display_albums(albums)
+
+
 };
 
 const display_albums = (albums) =>{
@@ -27,7 +35,7 @@ const display_albums = (albums) =>{
                         </img>
                     </div>
                     <div class = "album__name">
-                        <h1 class="album__title">${album.artistName}</h1>
+                        <h1 class="album__title">${album.collectionName}</h1>
                     </div>
                 </div>
             </div>
@@ -35,7 +43,7 @@ const display_albums = (albums) =>{
     </div>`
     })
     .join('')
-    album_container.insertAdjacentHTML("afterbegin",html_string)
+    dom_selectors.album_container.insertAdjacentHTML("afterbegin",html_string)
 };
 
 
