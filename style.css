@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
 }
+
 .search-bar{
     display:flex;
     align-items: center;
@@ -47,4 +48,20 @@
 
 .message-container{
     padding-top: 3em;
+}
+
+.album-container{
+    overflow: scroll;
+    display:flex;
+    
+}
+.album-list{
+    display:flex;
+    flex-direction: column;
+}
+.album__title{
+    font-size: 1em;
+}
+.album__name{
+    width: 50%;
 }
