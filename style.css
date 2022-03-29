@@ -5,12 +5,13 @@
     padding: 0;
 }
 
+
 .search-bar{
     display:flex;
     align-items: center;
     justify-content: center;  
     background: rgba(0,0,0,0.5);
-    z-index: 3;
+    
 }
 
 .search-bar__button{
@@ -47,22 +48,53 @@
 }
 
 .message-container{
+    display:flex;
+    justify-content: center;
     padding-top: 3em;
+    color:ivory;
+    background: #000000d0 ;
 }
 
-.album-container{
-    overflow: scroll;
-    display:flex;
-    flex-wrap: wrap;
+.album_container{
+    display:flex;   
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    background: #000000d0 ;
+    color:ivory;
     
 }
-.album-list{
-    display:flex;
-    flex-direction: column;
+
+.album-card{
+    height:300px;
+    width:300px;
+    border:ivory;
+    border-style: groove;
+    border-radius: 10px;
+    margin:10px;
+    background: rgba(0,0,0,0.5);
+ 
 }
+.album-card:hover{
+    background: black;
+    transition: 0.5s ease-in-out;
+}
+/* .album-info{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+} */
 .album__title{
     font-size: 1em;
+    padding-left: 15px;
 }
 .album__name{
-    width: 50%;
+    width: inherit;
 }
+
+img{
+    width:250px;
+    margin: 5px;
+    padding-left: 15px;
+}
+
